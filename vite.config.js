@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1]
+const repositoryName = 'Weather-App.Vue.js'
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [vue()],
-  base: process.env.GITHUB_ACTIONS && repositoryName ? `/${repositoryName}/` : '/',
-})
+  base: mode === 'production' ? `/${repositoryName}/` : '/',
+}))
